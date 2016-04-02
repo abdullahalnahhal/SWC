@@ -39,7 +39,7 @@ class Lib_Secure extends Lib_General
 	}
 	public function pass($password) // Hashing password
 	{
-		hash_hmac("sha512", $password, "d326145a0b6f66746ceafa5");
+		return hash_hmac("sha512", $password, "");
 	}
 	public function sess() // Session Start
 	{
@@ -130,10 +130,14 @@ class Lib_Secure extends Lib_General
 	   	$decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $key, $crypttext, MCRYPT_MODE_ECB, $iv);
 	   	return $decrypttext;
 	}
-	public function ref_checker($accepted_page) // it takes the accepted page(s) [full path] and compare it/them with the hreferer then return true or false
+	public function ref_checker($accepted_page=NULL) // it takes the accepted page(s) [full path] and compare it/them with the hreferer then return true or false
 	{
 		$ref_page = $_SERVER["HTTP_REFERER"];
-		if (is_array($accepted_page)) 
+		if (!$accepted_page) 
+		{
+			return $ref_page;
+		}
+		elseif (is_array($accepted_page)) 
 		{
 			if (in_array($ref_page, $accepted_page)) 
 			{
@@ -195,5 +199,9 @@ class Lib_Secure extends Lib_General
 	public function sec_cookie($name , $value , $expiration = 0 , $path ="" , $domain = "" , $secure = false, $httponly = false)
 	{
 		setcookie($name, $value, time() + (86400 * 30), "/"); // 86400 = 1 day
+	}
+	public function set_lang($lang)//set language as a cookie
+	{
+		setcookie("lang", $lang);
 	}
 }

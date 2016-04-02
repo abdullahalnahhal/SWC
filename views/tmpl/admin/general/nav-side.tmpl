@@ -1,0 +1,40 @@
+        <nav  class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                            <img src="<?= PBLC ?>/admin/img/user.jpg" class="img-circle" />
+
+                           
+                        </div>
+
+                    </li>
+                     <li>
+                        <a  href="#"> <strong> Romelia Alexendra </strong></a> 
+                    </li>
+
+                    <li>
+                        <a class="<?=$this->active['usr']?>"  href="/SWC/admin"><i class="fa fa-dashboard "></i><?=$this->text['users']?></a>
+                    </li>
+
+                    <li>
+                        <a class="<?=$this->active['type']?>"  href="/SWC/admin/usrstype"><i class="fa fa-dashboard "></i><?=$this->text['usrstype']?></a>
+                    </li>
+
+                    <li>
+                        <a class="<?=$this->active['tracks']?>"  href="/SWC/admin/tracks"><i class="fa fa-venus "></i><?=$this->text['trks']?></a>
+                        
+                    </li>
+                    
+                    <li>
+                        <a class="<?=$this->active['articls']?>"  href="/SWC/admin/articls"><i class="fa fa-bolt "></i><?=$this->text['artcls']?></a>
+                        
+                    </li>
+                   
+                     
+                     <!-- <li>
+                        <a class="<?=$this->active['questions']?>"  href="/SWC/admin/questions"><i class="fa fa-code "></i><?=$this->text['Q']?></a>
+                    </li> -->                
+                </ul>
+            </div>
+        </nav>

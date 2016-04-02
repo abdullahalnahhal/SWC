@@ -1,0 +1,31 @@
+<a href="/SWC/admin/addtrk" class="btn btn-danger">
+	<i class="fa fa-plus-square-o" ></i>
+	<?=$this->text['addtrk']?>
+</a>
+<br>
+<table class="table datatable table-bordered table-hover" >
+	<thead>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Objectives</th>
+	</thead>
+	<tbody>
+		<?php
+			foreach ($this->tracks as $track) 
+			{
+				?>
+					<tr>
+						<td><?=$track['identifier']?></td>
+						<td><?=$track['name']?></td>
+						<td><?=$track['objectives']?></td>
+					</tr>
+				<?php
+			}
+		?>
+	</tbody>
+	<tfoot>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Objectives</th>
+	</tfoot>
+</table>

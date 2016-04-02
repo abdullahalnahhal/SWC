@@ -47,4 +47,23 @@
 				echo "There no file Like that in that path";
 			}
 		}
+		public function upload_file($target_dir , $files , $file_name , $basename = NULL, $type = NULL )
+		{
+			$target_file = $target_dir . basename($files[$file_name]["name"]);
+			$uploadOk = 1;
+			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+			// Check if file already exists
+			if (pathinfo($target_file, PATHINFO_EXTENSION) != "html" || file_exists($target_file) ) 
+			{
+				return false;
+			}
+			if (move_uploaded_file($files[$file_name]["tmp_name"], $target_file)) 
+			{
+					return true;
+			} 
+			else 
+			{
+				return false;
+			}
+		}
 	}

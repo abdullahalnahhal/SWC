@@ -41,7 +41,15 @@ function __autoload($classname) {
 				$url = $_GET['url'];
 				$url = rtrim($url,'/');
 				$url = explode('/', $url);
+				if ($url[0] == 'lang') 
+				{
+					$secure = new Lib_secure();
+					$url = $secure->ref_checker();
+					$secure->set_lang($url[1]);
+					$secure->router($url);
+				}
 				$file = 'controller/'.$url[0].'.php';
+				
 				if (file_exists($file)) 
 				{
 					require $file;
@@ -66,6 +74,14 @@ function __autoload($classname) {
 							echo("<br>The method : {$url[1] } is Not exist ");
 						}
 					}
+					elseif (method_exists ($controller,'index')) 
+					{
+						$controller->index();
+					}
+					else
+					{
+						echo("<br>There No Index In Your Controller");
+					}
 				}
 				else
 				{
@@ -75,6 +91,7 @@ function __autoload($classname) {
 			}
 			else
 			{
+
 				require_once 'controller/index.php';
 				$controller = new Index();
 				return false;

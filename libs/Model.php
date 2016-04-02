@@ -12,7 +12,7 @@ class Model
 	#	-If you don't enter the host name , user name ,Or password;							#
 	#	-The default will be host name:loclhost , user name: root , and password is empty . #
 	#########################################################################################
-	private $dbName = "mmpro";
+	private $dbName = "swc";
 	private $host="localhost";
 	private $userName="root";
 	private $password="";

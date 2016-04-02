@@ -35,7 +35,7 @@ $(document).ready(function () {
     /*======================================
    WRITE YOUR SCRIPTS BELOW
    ========================================*/
-   
+   $(".datatable").dataTable();
    
 
 });

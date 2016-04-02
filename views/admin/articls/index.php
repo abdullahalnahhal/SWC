@@ -1,18 +1,17 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php $this->title = 'Free Bootstrap Admin Template' ?>
-<?= $this->tmpl('admin/head'); ?>
+<?= $this->tmpl('admin/general/head'); ?>
 <body>
     <div id="wrapper">
         
-        <?= $this->tmpl('admin/nav-top') ?>
+        <?= $this->tmpl('admin/general/nav-top') ?>
         <!-- /. NAV TOP  -->
-        <?= $this->tmpl('admin/nav-side') ?>
+        <?= $this->tmpl('admin/general/nav-side') ?>
         <!-- /. SIDEBAR MENU (navbar-side) -->
         <div id="page-wrapper" class="page-wrapper-cls">
             <div id="page-inner">
-                <?= $this->tmpl('admin/page-map'); ?>
-                <?= $this->tmpl('admin/content'); ?>
+                <?= $this->tmpl('admin/general/page-map'); ?>
+                <?= $this->tmpl('admin/articls/content'); ?>
             </div>
             <!-- /. PAGE INNER  -->
         </div>
@@ -20,9 +19,9 @@
     </div>
         </div>
     <!-- /. WRAPPER  -->
-    <?= $this->tmpl('admin/footer'); ?>
+    <?= $this->tmpl('admin/general/footer'); ?>
     <!-- /. FOOTER  -->
-    <?= $this->tmpl('admin/foot'); ?>
+    <?= $this->tmpl('admin/general/foot'); ?>
 
 
 </body>
