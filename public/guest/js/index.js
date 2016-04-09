@@ -16,7 +16,7 @@ $(".trk").click(function()
 				data = JSON.parse(data);
 				for (i = 0; i <= data.length ; i++) 
 				{
-					list+="<li>&emsp;&emsp;<a href='javascript:void(0);' rtc=''"+data[i].title+"'> ــ "+data[i].title+"</a></li>";
+					list+="<li>&emsp;&emsp;<a onclick='get_rtc(\""+data[i].identifier+"\")' href='javascript:void(0);' class='rtc' rtc='"+data[i].title+"'> ــ "+data[i].title+"</a></li>";
 					i++;
 				}
 				$("#"+rtc_list).html(list);
@@ -45,3 +45,20 @@ $(".sign").click(function()
 		$("#uname").html('<input type="text" name="name" id="name" value="" placeholder="Name" required />');
 	}
 });
+$("#close").click(function() 
+{
+	$("#theater").fadeOut('fast');
+	$("#shower").fadeOut('fast');
+	$("#close").fadeOut('fast');
+	$("#shower").attr('src', "");
+});
+function get_rtc(identifier) 
+{
+	$("#theater").fadeIn('slow');
+	$("#shower").fadeIn('slow');
+	$("#close").fadeIn('slow');
+	$.post("/SWC/index/get_rtc/"+identifier,{},function(data)
+	{
+		$("#shower").attr('src', data);
+	});
+}

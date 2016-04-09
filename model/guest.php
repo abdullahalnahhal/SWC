@@ -45,4 +45,11 @@ class Model_Guest extends Model
 			return false;
 		}
 	}
+	public function get_rtc($identifier)
+	{
+		$this::$tableName = "track_aticls";
+		$rtc = $this->select('*',"`identifier`='$identifier'");
+		$rtc = $this->assoc($rtc);
+		return $rtc[0]['content'];
+	}
 }

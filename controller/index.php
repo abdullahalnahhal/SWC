@@ -50,4 +50,9 @@ class Index extends Controller
 			$this->secure->router("/SWC/user/home/".$check);
 		}
 	}
+	public function get_rtc($identifier)
+	{
+		$rtc_path = $this->guest->get_rtc($identifier);
+		echo PBLC."/files/artcls/$rtc_path";
+	}
 }
