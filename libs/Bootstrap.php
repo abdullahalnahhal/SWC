@@ -94,6 +94,7 @@ function __autoload($classname) {
 
 				require_once 'controller/index.php';
 				$controller = new Index();
+				$controller->index();
 				return false;
 			}
 		}

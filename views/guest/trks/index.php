@@ -10,7 +10,7 @@
 			<!-- Header -->
 				<?=$this->tmpl('guest/general/header');?>
 			<!-- Content -->
-				<?=$this->tmpl('guest/general/content');?>
+				<?=$this->tmpl('guest/trks/content');?>
 			<!-- Footer -->
 				<?=$this->tmpl('guest/general/footer');?>
 
