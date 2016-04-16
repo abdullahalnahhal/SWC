@@ -2,3 +2,33 @@
 	<i class="fa fa-plus-square-o" ></i>
 	<?=$this->text['addQ']?>
 </a>
+<br>
+<table class="table datatable table-bordered table-hover" >
+	<thead>
+		<th>ID</th>
+		<th>Question</th>
+		<th>Grade</th>
+		<th>Track</th>
+	</thead>
+	<tbody>
+		<?php
+			foreach ($this->questions as $ques) 
+			{
+				?>
+					<tr>
+						<td><?=$ques['identifier']?></td>
+						<td><?=$ques['question']?></td>
+						<td><?=$ques['grade']?></td>
+						<td><?=$ques['track_name']?></td>
+					</tr>
+				<?php
+			}
+		?>
+	</tbody>
+	<tfoot>
+		<th>ID</th>
+		<th>Question</th>
+		<th>Grade</th>
+		<th>Track</th>
+	</tfoot>
+</table>

@@ -1,0 +1,34 @@
+<a href="/SWC/admin/addusrtype" class="btn btn-danger">
+    <i class="fa fa-plus-circle" ></i>
+    <?=$this->text['addtype']?>
+</a>
+<br>
+<table class="table datatable table-bordered table-hover">
+	<thead>
+		<th> # </th>
+		<th> Type </th>
+		<th> Shortcut </th>
+	</thead>
+	<tbody>
+		<?php
+			$iterator = 0;
+			foreach ($this->types as $type) 
+			{
+				$iterator++;
+				?>
+					<tr>
+						<td><?= $iterator ?></td>
+						<td><?= $type['type'] ?></td>
+						<td><?= $type['shortcut'] ?></td>
+					</tr>
+
+				<?php
+			}
+		?>
+	</tbody>
+	<tfoot>
+		<th> # </th>
+		<th> Type </th>
+		<th> Shortcut </th>
+	</tfoot>
+</table>

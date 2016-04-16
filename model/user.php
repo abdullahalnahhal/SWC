@@ -9,34 +9,62 @@ class Model_User extends Model
 	{
 		parent::__construct();	//for consructing the Model default actions
 	}
-	/* get and check the username and user password 
-	if they are correct return user information if not return false*/
-	public function login($uname , $upass)
+	
+	public function user_info($id)
 	{
-		$this::$tableName="users";
-		$sql = $this->select("*"," `uname`='".$uname."' AND `upass`='".$upass."'");
-		$list = $this->assoc($sql);
-		if (count($list)>0) 
+		$this::$tableName = "v_users";
+		$info = $this->select('*',"`id`=$id");
+		$info = $this->assoc($info);
+		if (!isset($info[0])) 
 		{
-			return $list[0];
+			return NULL;
 		}
-		else
-		{
-			return false;
-		}
+		return $info[0];
 	}
-	public function get_module($mod_id)
+	public function all_tracks()
 	{
-		$this::$tableName="module";
-		$sql = $this->select("*"," `id`='".$mod_id."'");
-		$list =  $this->assoc($sql);
-		if (count($list)>0) 
+		$this::$tableName = "track";
+		$tracks = $this->select('*');
+		$tracks = $this->assoc($tracks);
+		return $tracks;
+	}
+	public function articls_list($ids)
+	{
+		$this::$tableName = "track_aticls";
+		$rtcs = $this->select('*',"`track_id` = '$ids'");
+		$rtcs = $this->assoc($rtcs);
+		return $rtcs;
+	}
+	public function answers($ques_id)
+	{
+		$this::$tableName = "answers";
+		$answers = $this->select('*',"`questions_id` = '$ques_id'");
+		$answers = $this->assoc($answers);
+		return $answers;
+	}
+	public function check($id)
+	{
+		$this::$tableName = "answers";
+		$answers = $this->select('*',"`id` = '$id'");
+		$answers = $this->assoc($answers);
+		return $answers[0];	
+	}
+	public function add_grade($user_id,$q_id)
+	{
+		$this::$tableName = "questions";
+		$question = $this->select('*',"`id` = '$q_id'");
+		$question = $this->assoc($question);
+		$grade = $question[0]['grade'];
+		$this::$tableName = "users";
+		$question = $this->freeQuery("UPDATE `users` SET `grade` = `grade`+$grade , `questions_id` = `questions_id`+1 WHERE `id`= $user_id;");
+		$next_question = $q_id + 1;
+		$this::$tableName = "questions";
+		$question = $this->select('*',"`id` = '$next_question'");
+		$question = $this->assoc($question);
+		if (isset($question[0])) 
 		{
-			return $list[0];
+			return $question[0];
 		}
-		else
-		{
-			return false;
-		}
+		return false;
 	}
 }

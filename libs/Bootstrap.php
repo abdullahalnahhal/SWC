@@ -56,13 +56,33 @@ function __autoload($classname) {
 					$controller = new $url[0];
 					if (isset($url[1])) 
 					{
+						if (is_numeric($url[1])) 
+						{
+							if (isset($url[2])) 
+							{
+								$method = $url[2];
+								$url[2] = $url[1];
+								$url[1] = $method;
+							}
+							else
+							{
+								$url[2] = $url[1];
+								$url[1] = "index";
+							}
+						}
 						if (method_exists ($controller,$url[1])) 
 						{
 							if (isset($url[2])) 
 							{
-								
+								if (isset($url[3])) 
+								{
+
+									$controller->{$url[1]}($url[2],$url[3]);
+								}
+								else
+								{
 									$controller->{$url[1]}($url[2]);
-								
+								}
 							}
 							else
 							{

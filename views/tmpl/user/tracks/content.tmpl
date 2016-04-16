@@ -1,0 +1,34 @@
+
+<?php
+	foreach ($this->tracks as $track) 
+	{
+?>
+			<div class="panel-group" id="accordion">
+				<div <?php if ($track['id'] && $track['id'] <= $this->information['track_id'] ){?>data-toggle="collapse" data-parent="#accordion" href="#collapseThree"<?php } ?> class="panel panel-default collapsed">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a><?=$track['name']?></a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
+						<div class="panel-body">
+							<?php
+								if ($track['id'] && $track['id'] <= $this->information['track_id']) 
+								{
+									$user = new Model_User();
+									$rtcs = $user->articls_list($track['id']);
+									foreach ($rtcs as $rtc ) 
+									{
+								?>
+										<a href="/SWC/user/<?=$this->information['id']?>/rtc/<?= $rtc['id'] ?>"> ــ <?= $rtc['title'] ?> </a>
+								<?php
+									}
+								}
+							?>
+						</div>
+					</div>
+				</div>
+			</div>
+<?php
+	}
+?>

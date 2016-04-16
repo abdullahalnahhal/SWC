@@ -90,4 +90,27 @@ class Model_Admin extends Model
 		$users = $this->assoc($users);
 		return $users;
 	}
+	########################
+	# Questions Operations #
+	########################
+	public function add_ques($question,$grade,$track,$questions)
+	{
+		$this::$tableName = "questions";
+		$identifier = "qus-".uniqid();
+		$insert_ques = $this->insert(['question','identifier','grade' ,'track_id'],[$question,$identifier,$grade , $track]);
+		$last_ques = $this->last('id');
+		$this::$tableName = "answers";
+		foreach ($questions as $ques) 
+		{
+			$ans_identifier = "ans-".uniqid();
+			$insert_ans = $this->insert(['answer','identifier','status' ,'questions_id'],[$ques['answer'],$ans_identifier,$ques['status'] , $last_ques]);
+		}
+	}
+	public function all_ques()
+	{
+		$this::$tableName = "v_question";
+		$questions = $this->select('*');
+		$questions = $this->assoc($questions);
+		return $questions;
+	}
 }

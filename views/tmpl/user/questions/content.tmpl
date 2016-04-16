@@ -1,0 +1,41 @@
+<?php
+    if (!isset($this->not_here)) 
+    {
+        ?>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <?=$this->information['question_identifier']?> : <?=$this->information['question']?> ... ?
+                </div>
+                <div class="panel-body">
+                    <form method="POST" action="/SWC/user/<?=$this->information['id']?>/check" >
+                    <?php 
+
+                        foreach ($this->answers as $answer) 
+                        {
+                    ?>
+                            <input type="checkbox" value="<?= $answer['id'] ?>" name="answer[]" > <?= $answer['answer'] ?> </input>.
+                            <br>
+                    <?php
+                        }
+                    ?>
+                </div>
+                <div class="panel-footer">
+                    <input type="hidden" name="q_id" value="<?=$this->information['questions_id']?>" >
+                    <button type="submit" class="btn btn-primary" > <?= $this->text['ans'] ?> </button>
+                </div>
+                </form>
+            </div>
+        <?php
+    }
+?>
+
+<?php
+    if (isset($this->err)) 
+    {
+?>
+        <div class="alert alert-danger">
+            <?= $this->err ?>
+        </div>
+<?php
+    }
+?>

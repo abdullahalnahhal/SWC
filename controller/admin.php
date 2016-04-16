@@ -40,7 +40,7 @@ class Admin extends Controller
 		$password = $this->secure->pass($this->secure->T($_POST['password']));
 		$type = $this->secure->T($_POST['type']);
 		$insert = $this->admin->add_user($name , $password , $email,$type);
-		$this->secure->router("/SWC/admin/user/index");
+		$this->secure->router("/SWC/admin");
 	}
 	public function all_users()
 	{
@@ -68,7 +68,7 @@ class Admin extends Controller
 		$type = $this->secure->T($_POST['type']);
 		$shortcut = $this->secure->T($_POST['shortcut']);
 		$this->admin->add_type($type , $shortcut);
-		$this->secure->router("/SWC/admin/usrtype/usrstype");
+		$this->secure->router("/SWC/admin/usrstype/");
 	}
 	public function all_user_types()
 	{
@@ -145,7 +145,8 @@ class Admin extends Controller
 	{
 		$this->view->title = "Admin Panel - Questions";
 		$this->view->active['questions'] = 'active-menu';
-		$this->view->render("admin/questions/index",[]);
+		$questions = $this->all_ques();
+		$this->view->render("admin/questions/index",['questions'=>$questions]);
 	}
 	public function addques()
 	{
@@ -154,5 +155,32 @@ class Admin extends Controller
 		$tracks = $this->admin->get_tracks();
 		$this->view->tracks = $tracks;
 		$this->view->render("admin/questions/addques",[]);
+	}
+	public function add_ques()
+	{
+		$question = $this->secure->T($_POST['question']);
+		$grade = $this->secure->T($_POST['grade']);
+		$track = $this->secure->T($_POST['track']);
+		$ques_number = $this->secure->T($_POST['answers']);
+		$answers=[];
+		for ($i=1; $i <=$ques_number ; $i++) 
+		{ 
+			$answer = $this->secure->T($_POST['answer-'.$i]);
+			if (isset($_POST['ans_check_'.$i])) 
+			{
+				$answers[]=["answer"=>$answer,"status"=>1];
+			}
+			else
+			{
+				$answers[]=["answer"=>$answer,"status"=>0];
+			}
+		}
+		$question_id = $this->admin->add_ques($question,$grade,$track,$answers);
+		$this->secure->router("/SWC/admin/questions");
+	}
+	public function all_ques()
+	{
+		$questions = $this->admin->all_ques();
+		return $questions;
 	}
 }

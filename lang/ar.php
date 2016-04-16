@@ -38,5 +38,8 @@
 		'Enter New Question'				=>	'أدخل السؤال الجديد',
 		'grade'								=>	'الدرجة',
 		'Enter Question grade'				=>	'أدخل درجة السؤال',
+		'Dashboard'							=>	'الرئيسية',,
+		'ans'								=>	'أجب',
+
 	];
 ?>

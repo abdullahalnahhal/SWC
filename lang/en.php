@@ -38,5 +38,7 @@
 		'Enter New Question'				=>	'Enter New Question',
 		'grade'								=>	'grade',
 		'Enter Question grade'				=>	'Enter Question grade',
+		'Dashboard'							=>	'Dashboard',
+		'ans'								=>	'Answer',
 	];
 ?>

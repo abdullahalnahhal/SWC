@@ -1,0 +1,23 @@
+   <div class="row">
+      <div class="col-sm-offset-1 col-lg-offset-1 col-md-offset-1 col-md-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+               <?=$this->text['New Type Data']?>
+            </div>
+            <div class="panel-body">
+               <form action="/SWC/admin/add_type" method="POST" >
+                  <div class="form-group">
+                     <label for="type"><?=$this->text['type']?></label>
+                     <input type="text" name="type" id="type" class="form-control"  placeholder="<?=$this->text['Enter Full Type']?>"  required/>
+                  </div>
+
+                  <div class="form-group">
+                     <label for="shortcut"><?=$this->text['shortcut']?></label>
+                     <input type="text" name="shortcut" id="shortcut" class="form-control"  placeholder="<?=$this->text['Enter Type Shortcut']?>" maxlength="3" required/>
+                  </div>
+                  <button type="submit" class="btn btn-default"><?=$this->text['add']?></button>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>

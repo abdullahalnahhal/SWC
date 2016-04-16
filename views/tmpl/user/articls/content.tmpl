@@ -1,0 +1,38 @@
+<a href="/SWC/admin/addrtc" class="btn btn-danger">
+	<i class="fa fa-plus-square-o" ></i>
+	<?=$this->text['addrtc']?>
+</a>
+<br>
+
+<table class="table datatable table-bordered table-hover" >
+	<thead>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Content</th>
+		<th>Track</th>
+		<th>Track ID</th>
+	</thead>
+	<tbody>
+		<?php
+			foreach ($this->articls as $rtc) 
+			{
+				?>
+					<tr>
+						<td><?=$rtc['identifier']?></td>
+						<td><?=$rtc['title']?></td>
+						<td><?=$rtc['content']?></td>
+						<td><?=$rtc['track_name']?></td>
+						<td><?=$rtc['track_identifier']?></td>
+					</tr>
+				<?php
+			}
+		?>
+	</tbody>
+	<tfoot>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Content</th>
+		<th>Track</th>
+		<th>Track ID</th>
+	</tfoot>
+</table>

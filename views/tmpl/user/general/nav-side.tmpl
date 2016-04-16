@@ -1,0 +1,24 @@
+        <nav  class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li>
+                        <div class="user-img-div">
+                            <img src="<?= PBLC ?>/admin/img/user.jpg" class="img-circle" />
+                        </div>
+
+                    </li>
+                     <li>
+                        <a  href="#"> <strong> <?= $this->information['name']?> </strong></a> 
+                    </li>
+                    <li>
+                        <a class="<?=$this->active['usr']?>"  href="/SWC/admin"><i class="fa fa-dashboard "></i><?=$this->text['Dashboard']?></a>
+                    </li>
+                    <li>
+                        <a class="<?=$this->active['tracks']?>"  href="/SWC/user/<?= $this->information['id']?>/tracks"><i class="fa fa-venus "></i><?=$this->text['trks']?></a>
+                    </li>
+                    <li>
+                        <a class="<?=$this->active['questions']?>"  href="/SWC/user/<?= $this->information['id']?>/questions/<?= $this->information['questions_id']?>"><i class="fa fa-code "></i><?=$this->text['Q']?></a>
+                    </li>               
+                </ul>
+            </div>
+        </nav>
