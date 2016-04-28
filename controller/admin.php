@@ -13,6 +13,11 @@ class Admin extends Controller
 		$this->gen = new Lib_General();
 		$this->table = new Lib_Table();
 		$this->html = new Lib_Html();
+		$this->secure->sess();
+		if (!$this->secure->sessCheck('user_type_id',2) && !$this->secure->sessCheck('user_type_id',3)) 
+		{
+			$this->secure->router("/SWC/");
+		}
 		parent::__construct();//for consructing the controller default actions
 	}
 	####################

@@ -47,12 +47,26 @@ class Index extends Controller
 		$check = $this->guest->check_login($email ,$password);
 		if ($check) 
 		{
-			$this->secure->router("/SWC/user/home/".$check);
+			$this->secure->sess();
+			$this->secure->sesconf(['id','name','identifier','mail','user_type_id'],[$check['id'],$check['name'],$check['identifier'],$check['mail'],$check['user_type_id']]);
+			if ($check['user_type_id'] == 4) 
+			{
+				$this->secure->router("/SWC/user/".$check['id']);
+			}
+			else
+			{
+				$this->secure->router("/SWC/admin/");
+			}
 		}
 	}
 	public function get_rtc($identifier)
 	{
 		$rtc_path = $this->guest->get_rtc($identifier);
 		echo PBLC."/files/artcls/$rtc_path";
+	}
+	public function logout()
+	{
+		$this->secure->sese();
+		$this->secure->router("/SWC/");
 	}
 }

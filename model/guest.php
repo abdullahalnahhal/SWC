@@ -38,7 +38,7 @@ class Model_Guest extends Model
 		$users = $this->assoc($users);
 		if (isset($users[0])) 
 		{
-			return $users[0]['identifier'];
+			return $users[0];
 		}
 		else
 		{

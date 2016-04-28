@@ -14,10 +14,9 @@ $(".trk").click(function()
 			{
 				list = "";
 				data = JSON.parse(data);
-				for (i = 0; i <= data.length ; i++) 
+				for (i = 0; i < data.length ; i++) 
 				{
 					list+="<li>&emsp;&emsp;<a onclick='get_rtc(\""+data[i].identifier+"\")' href='javascript:void(0);' class='rtc' rtc='"+data[i].title+"'> ــ "+data[i].title+"</a></li>";
-					i++;
 				}
 				$("#"+rtc_list).html(list);
 			});

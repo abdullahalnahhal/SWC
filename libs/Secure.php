@@ -52,7 +52,6 @@ class Lib_Secure extends Lib_General
 	}
 	public function sesconf( $vars , $vals ) // for setting session variables and values 
 	{
-		// $count = count($vars);
 		if (is_array($vars)) 
 		{
 			$count = count($vars);
@@ -65,6 +64,37 @@ class Lib_Secure extends Lib_General
 		{
 			$_SESSION[$vars] = $vals;
 		}
+	}
+	public function sessCheck($vars , $vals) // for checking session variables
+	{
+		if (is_array($vars)) 
+		{
+			$count = count($vars);
+			for ($i=0; $i < $count; $i++) 
+			{ 
+				if ($_SESSION[$vars[$i]] != $vals[$i]) 
+				{
+					return false;
+				}
+			}
+		}
+		else
+		{
+			if ($_SESSION[$vars] != $vals) 
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	public function get_ses($var)
+	{
+		return $_SESSION[$var];
+	}
+	public function set_ses($var , $val)
+	{
+		$_SESSION[$var] = $val;
+		return $_SESSION[$var];
 	}
 	private function encrypt_key_generator() // Generating the encryption key
 	{
