@@ -19,6 +19,8 @@ class User extends Controller
 		{
 			$this->secure->router("/SWC/");
 		}
+		$this->profile_pic = $this->secure->get_ses("profile_pic");
+		// echo $this->profile_pic;die;
 		parent::__construct();//for consructing the controller default actions
 	}
 	function index($id = NULL)
@@ -32,7 +34,7 @@ class User extends Controller
 			$this->view->title = "SoftWare Competition";
 			$this->view->active['usr'] = 'active-menu';
 			$info = $this->user->user_info($id);
-			$this->view->render("user/user/index",["information"=>$info]);
+			$this->view->render("user/user/index",["information"=>$info,"profile_pic"=>$this->profile_pic ]);
 		}
 		else
 		{
@@ -50,7 +52,7 @@ class User extends Controller
 		$this->view->active['tracks'] = 'active-menu';
 		$info = $this->user->user_info($user_id);
 		$tracks = $this->user->all_tracks();
-		$this->view->render("user/tracks/index",["information"=>$info , "tracks"=>$tracks]);
+		$this->view->render("user/tracks/index",["information"=>$info ,"profile_pic"=>$this->profile_pic ]);
 	}
 	public function questions($user_id,$id)
 	{
@@ -64,11 +66,11 @@ class User extends Controller
 		$answers = $this->user->answers($id);
 		if (isset($answers[0])) 
 		{
-			$this->view->render("user/questions/index",["information"=>$info,"answers"=>$answers]);
+			$this->view->render("user/questions/index",["information"=>$info,"answers"=>$answers,"profile_pic"=>$this->profile_pic ]);
 		}
 		else
 		{
-			$this->view->render("user/questions/index",["information"=>$info,"not_here"=>true,"err"=>"There No More Questions"]);
+			$this->view->render("user/questions/index",["information"=>$info,"not_here"=>true,"err"=>"There No More Questions","profile_pic"=>$this->profile_pic ]);
 		}
 	}
 	public function check($id)
@@ -94,4 +96,15 @@ class User extends Controller
 			$this->secure->router("/SWC/user/$id/questions/$new_question");
 		}
 	}
+	public function upload_pic()
+	{
+		$seq = uniqid();
+		$upload = $this->gen->upload_file("public/imgs/".$seq , $_FILES , "file" ,NULL,"ico");
+		if ($upload ) 
+		{
+			$id = $this->secure->get_ses("id");
+			$this->user->update_profile_pic($seq.$_FILES['file']['name'],$id);
+			$this->secure->sesconf("profile_pic",PBLC."/imgs/".$seq.$_FILES['file']['name']);
+		}
+	} 
 }

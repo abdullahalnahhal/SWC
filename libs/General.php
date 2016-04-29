@@ -53,7 +53,7 @@
 			$uploadOk = 1;
 			$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 			// Check if file already exists
-			if (pathinfo($target_file, PATHINFO_EXTENSION) != "html" || file_exists($target_file) ) 
+			if (file_exists($target_file) ) 
 			{
 				return false;
 			}

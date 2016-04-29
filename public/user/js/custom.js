@@ -32,11 +32,13 @@ $(document).ready(function () {
             $('div.sidebar-collapse').removeClass('collapse')
         }
     });
+
+    
+
+
     /*======================================
-   WRITE YOUR SCRIPTS BELOW
-   ========================================*/
-   
-   
+        WRITE YOUR SCRIPTS BELOW
+    ========================================*/
 
 });
       

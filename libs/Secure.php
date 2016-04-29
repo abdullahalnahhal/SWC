@@ -96,6 +96,17 @@ class Lib_Secure extends Lib_General
 		$_SESSION[$var] = $val;
 		return $_SESSION[$var];
 	}
+	public function session_checker($sess_var , $sess_val) // it takes the imortant session variables and its value to compare if it true or not
+	{
+		if ($_SESSION[$sess_var] == $sess_val) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	private function encrypt_key_generator() // Generating the encryption key
 	{
 		###############################################
@@ -211,17 +222,7 @@ class Lib_Secure extends Lib_General
 			return false;
 		}
 	}
-	public function session_checker($sess_var , $sess_val) // it takes the imortant session variables and its value to compare if it true or not
-	{
-		if ($_SESSION[$sess_var] == $sess_val) 
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	
 	public function router($dir_page) // it redirect the page to another one
 	{
 		header("location:".$dir_page);

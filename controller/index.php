@@ -48,7 +48,15 @@ class Index extends Controller
 		if ($check) 
 		{
 			$this->secure->sess();
-			$this->secure->sesconf(['id','name','identifier','mail','user_type_id'],[$check['id'],$check['name'],$check['identifier'],$check['mail'],$check['user_type_id']]);
+			if ($check['profile_pic']) 
+			{
+				$profile_pic = PBLC."/imgs/".$check['profile_pic'];
+			}
+			else
+			{
+				$profile_pic = PBLC."/imgs/default.png";
+			}
+			$this->secure->sesconf(['id','name','identifier','mail','user_type_id','profile_pic'],[$check['id'],$check['name'],$check['identifier'],$check['mail'],$check['user_type_id'],$profile_pic]);
 			if ($check['user_type_id'] == 4) 
 			{
 				$this->secure->router("/SWC/user/".$check['id']);

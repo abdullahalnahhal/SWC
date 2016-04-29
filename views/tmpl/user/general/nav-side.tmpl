@@ -3,9 +3,10 @@
                 <ul class="nav" id="main-menu">
                     <li>
                         <div class="user-img-div">
-                            <img src="<?= PBLC ?>/admin/img/user.jpg" class="img-circle" />
+                            <img src="<?= $this->profile_pic ?>" id="profile" class="img-circle" />
+                            <div class="mask" ><i id="attach" class="fa fa-pencil" ></i></div>
                         </div>
-
+                        <input type="file" id="uploader" name="file" onchange="loadFile(event)">
                     </li>
                      <li>
                         <a  href="#"> <strong> <?= $this->information['name']?> </strong></a> 

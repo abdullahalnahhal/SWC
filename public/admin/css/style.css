@@ -27,7 +27,36 @@ body {
     line-height:25px;
     font-size:14px;
 }
-
+#uploader
+{
+    display: none;
+}
+.mask
+{
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    padding: .5em .5em .5em .5em;
+    padding-top: 5em;
+    z-index: 9;
+    height: 0px;
+    width: 0px;
+    display: none;
+}
+.user-img-div:hover>.mask
+{
+    display: block;
+    height: 100%;
+    width:100%;
+}
+.mask>.fa
+{
+    cursor: pointer;
+}
 #wrapper {
     width: 100%;
     background: #d2d2d2;

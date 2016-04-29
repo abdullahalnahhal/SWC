@@ -67,4 +67,10 @@ class Model_User extends Model
 		}
 		return false;
 	}
+	public function update_profile_pic($name,$id)
+	{
+		
+		$this::$tableName = "users";
+		$this->update('profile_pic',$name,"id",$id);
+	}
 }

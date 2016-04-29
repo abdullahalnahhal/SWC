@@ -32,7 +32,18 @@ body {
     width: 100%;
     background: #d2d2d2;
 }
-
+.mask
+{
+    height: 100%;
+    width:100%;
+    background: black;
+    position: absolute;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+    padding: .5em .5em .5em .5em;
+    z-index: 9;
+}
 #page-wrapper {
     padding: 15px 15px;
     min-height: 800px;
