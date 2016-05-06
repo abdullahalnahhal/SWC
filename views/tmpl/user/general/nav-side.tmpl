@@ -12,7 +12,7 @@
                         <a  href="#"> <strong> <?= $this->information['name']?> </strong></a> 
                     </li>
                     <li>
-                        <a class="<?=$this->active['usr']?>"  href="/SWC/admin"><i class="fa fa-dashboard "></i><?=$this->text['Dashboard']?></a>
+                        <a class="<?=$this->active['usr']?>"  href="/SWC/user/<?= $this->information['id']?>"><i class="fa fa-dashboard "></i><?=$this->text['Dashboard']?></a>
                     </li>
                     <li>
                         <a class="<?=$this->active['tracks']?>"  href="/SWC/user/<?= $this->information['id']?>/tracks"><i class="fa fa-venus "></i><?=$this->text['trks']?></a>
