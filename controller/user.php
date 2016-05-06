@@ -51,7 +51,7 @@ class User extends Controller
 		$this->view->active['tracks'] = 'active-menu';
 		$info = $this->user->user_info($user_id);
 		$tracks = $this->user->all_tracks();
-		$this->view->render("user/tracks/index",["information"=>$info ,"profile_pic"=>$this->profile_pic ]);
+		$this->view->render("user/tracks/index",["information"=>$info,"tracks"=>$tracks ,"profile_pic"=>$this->profile_pic ]);
 	}
 	public function questions($user_id,$id)
 	{
@@ -114,8 +114,7 @@ class User extends Controller
 		else
 		{
 			$this->secure->router("/SWC/user/$id");
-		}
-		
+		}	
 	}
 	public function upload_pic()
 	{
@@ -128,4 +127,8 @@ class User extends Controller
 			$this->secure->sesconf("profile_pic",PBLC."/imgs/".$seq.$_FILES['file']['name']);
 		}
 	} 
+	public function rtc( $id , $user_id )
+	{
+		echo "$id";
+	}
 }
