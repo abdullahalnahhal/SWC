@@ -1,8 +1,7 @@
 <?php
 class Lib_Secure extends Lib_General
 {
-	function __construct() 
-	{}
+	function __construct(){}
 	public function T($text) //validate any text input
 	{
 		$text = trim($text);
